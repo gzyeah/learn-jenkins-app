@@ -1,6 +1,8 @@
 pipeline {
     agent {
-        label 'docker-with-node'
+        docker {
+            image 'node:18-alpine'
+        }
     }
     stages {
         stage('Stage 1') {
@@ -14,9 +16,12 @@ pipeline {
         stage('Stage 2') {
             steps {
                 sh '''
-                ls -las
-                pwd
-                npm start
+                ls -la
+                node --version
+                npm --version
+                npm ci
+                npm run build
+                ls -la
                 '''
             }
         }
