@@ -16,7 +16,7 @@ pipeline {
                 sh '''
                 ls -las
                 pwd
-                npm run build
+                npm run
                 '''
             }
         }
