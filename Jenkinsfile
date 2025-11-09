@@ -1,9 +1,23 @@
 pipeline {
-    agent any
+    agent {
+        label 'docker-with-node'
+    }
     stages {
         stage('Stage 1') {
             steps {
-                echo 'Hello world!'
+                sh '''
+                echo hello
+                hostname
+                '''
+            }
+        }
+        stage('Stage 2') {
+            steps {
+                sh '''
+                ls -las
+                pwd
+                npm run build
+                '''
             }
         }
     }
